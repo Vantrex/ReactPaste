@@ -1,0 +1,14 @@
+.container {
+    margin-left: 10px;
+    padding-right: 10px;
+    clear: none;
+    display: inline-block;
+    padding-top: 0px;
+    padding-bottom: 10px;
+    min-height: calc(100% - 5px) !important;
+    height: auto;
+    min-width: calc(100% - 70px) !important;
+    width: auto;
+    overflow: visible;
+}
+
