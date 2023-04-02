@@ -4,7 +4,7 @@ import PasteForm from "../form/PasteForm";
 import PasteDisplay from "../paste/PasteDisplay"
 import axios from "axios";
 import {Paste} from "../../model/paste/paste";
-import {API, API_URL, EndPoints} from "../../util/consts";
+import {API_URL, EndPoints} from "../../util/consts";
 
 
 function App() {
