@@ -34,7 +34,7 @@ function PasteForm({onSubmit}: any) {
             }
             onSubmit(pasteContent, realTitle)
         }
-    }, [pasteTitle, saving])
+    }, [onSubmit, pasteContent, pasteTitle, saving])
 
 
     return (
