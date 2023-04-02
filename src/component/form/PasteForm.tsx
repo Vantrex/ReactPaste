@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import './PasteForm.css'
 import ConfirmPostForm from "./post/ConfirmPostForm";
-import {Simulate} from "react-dom/test-utils";
 
 
 function PasteForm({onSubmit}: any) {
@@ -24,7 +23,7 @@ function PasteForm({onSubmit}: any) {
         return () => {
             document.removeEventListener('keydown', handleSaveShortcut);
         }
-    }, []);
+    });
 
 
     useEffect(() => {
