@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import PasteForm from "../form/PasteForm";
 import PasteDisplay from "../paste/PasteDisplay"
@@ -8,6 +8,10 @@ import {API_URL, EndPoints} from "../../util/consts";
 
 
 function App() {
+
+    useEffect(() => {
+        document.title = API_URL
+    })
     const putPaste = async (title: string, content: string) => {
         const body = {
             title: title,
@@ -15,9 +19,10 @@ function App() {
         }
         await axios.put<Paste>(API_URL + EndPoints.PASTE, body).then(value => {
             window.location.pathname = "/" + value.data.id;
-         //   window.history.pushState(null, '', "/" + value.data.id)
         })
     }
+
+
 
     return (
         <>
