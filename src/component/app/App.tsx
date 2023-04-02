@@ -11,14 +11,14 @@ function App() {
 
     useEffect(() => {
         console.log("useEffect @App")
-        document.title = process.env.REACT_APP_PASTE_API_URL
+        axios.defaults.baseURL = API_URL
     })
     const putPaste = async (title: string, content: string) => {
         const body = {
             title: title,
             content: content
         }
-        await axios.put<Paste>(API_URL + EndPoints.PASTE, body).then(value => {
+        await axios.put<Paste>(EndPoints.PASTE, body).then(value => {
             window.location.pathname = "/" + value.data.id;
         })
     }

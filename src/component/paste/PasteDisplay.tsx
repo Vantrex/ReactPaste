@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {Paste} from "../../model/paste/paste";
 import axios from "axios";
 import './PasteDisplay.css'
-import {API_URL, EndPoints} from "../../util/consts";
+import {EndPoints} from "../../util/consts";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
 import {androidstudio} from "react-syntax-highlighter/dist/esm/styles/hljs";
@@ -12,7 +12,7 @@ function PasteDisplay(props: { id: string }) {
 
     const [paste, setPaste] = useState<Paste | null>(null)
     useEffect(() => {
-        axios.get<Paste>(API_URL + EndPoints.PASTE + "/" + props.id)
+        axios.get<Paste>(EndPoints.PASTE + "/" + props.id)
             .then(response => setPaste(response.data))
     },)
     useEffect(() => {
