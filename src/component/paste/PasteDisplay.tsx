@@ -8,13 +8,18 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import {androidstudio} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 
-function PasteDisplay(props: { id: string }) {
+function PasteDisplay() {
 
     const [paste, setPaste] = useState<Paste | null>(null)
+
     useEffect(() => {
-        axios.get<Paste>(EndPoints.PASTE + "/" + props.id)
+
+        const id = window.location.pathname.substring(1);
+        axios.get<Paste>(EndPoints.PASTE + "/" + id)
             .then(response => setPaste(response.data))
-    },)
+
+    })
+
     useEffect(() => {
         if (paste) {
             document.title = paste.title;
@@ -31,7 +36,8 @@ function PasteDisplay(props: { id: string }) {
             <div className={"container"}>
                 <SyntaxHighlighter language="java"
                                    showLineNumbers={true}
-                                   className={"syntax-highlighter"} style={androidstudio}>{paste.content}</SyntaxHighlighter>
+                                   className={"syntax-highlighter"}
+                                   style={androidstudio}>{paste.content}</SyntaxHighlighter>
             </div>
         </>
     );

@@ -1,9 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import './PasteForm.css'
 import ConfirmPostForm from "./post/ConfirmPostForm";
+import axios from "axios";
+import {Paste} from "../../model/paste/paste";
+import {EndPoints} from "../../util/consts";
 
 
-function PasteForm({onSubmit}: any) {
+function PasteForm() {
     const [pasteTitle, setPasteTitle] = useState('')
     const [pasteContent, setPasteContent] = useState<string>('')
     const [saving, setSaving] = useState(false)
@@ -26,15 +29,25 @@ function PasteForm({onSubmit}: any) {
     });
 
 
+    const putPaste = async (title: string, content: string) => {
+        const body = {
+            title: title,
+            content: content
+        }
+        await axios.put<Paste>(EndPoints.PASTE, body).then(value => {
+            window.location.pathname = "/" + value.data.id;
+        })
+    }
+
     useEffect(() => {
         if (saving) {
             let realTitle = pasteTitle;
             if (realTitle === '') {
                 realTitle = pasteContent.substring(0, Math.min(20, pasteContent.length));
             }
-            onSubmit(pasteContent, realTitle)
+            putPaste(realTitle, pasteContent)
         }
-    }, [onSubmit, pasteContent, pasteTitle, saving])
+    }, [pasteContent, pasteTitle, saving])
 
 
     return (
