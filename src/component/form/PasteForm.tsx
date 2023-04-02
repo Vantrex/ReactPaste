@@ -35,7 +35,7 @@ function PasteForm() {
             content: content
         }
         await axios.put<Paste>(EndPoints.PASTE, body).then(value => {
-            window.location.pathname = "/" + value.data.id;
+            window.location.pathname = "/paste/" + value.data.id;
         })
     }
 

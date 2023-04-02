@@ -6,15 +6,16 @@ import {EndPoints} from "../../util/consts";
 import SyntaxHighlighter from "react-syntax-highlighter";
 
 import {androidstudio} from "react-syntax-highlighter/dist/esm/styles/hljs";
+import {useParams} from "react-router-dom";
 
 
 function PasteDisplay() {
 
     const [paste, setPaste] = useState<Paste | null>(null)
 
+    const { id } = useParams();
     useEffect(() => {
 
-        const id = window.location.pathname.substring(1);
         axios.get<Paste>(EndPoints.PASTE + "/" + id)
             .then(response => setPaste(response.data))
 
