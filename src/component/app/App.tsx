@@ -17,7 +17,7 @@ function App() {
             <div className="App">
                 <Routes>
                     <Route path="/" Component={PasteForm} />
-                    <Route path="/:id" Component={PasteDisplay} />
+                    <Route path="./:id" Component={PasteDisplay} />
                 </Routes>
             </div>
         </Router>
