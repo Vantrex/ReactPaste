@@ -1,11 +1,10 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import PasteForm from "../form/PasteForm";
 import PasteDisplay from "../paste/PasteDisplay"
 import axios from "axios";
-import {Paste} from "../../model/paste/paste";
-import {API_URL, EndPoints} from "../../util/consts";
+import {API_URL} from "../../util/consts";
 
 
 function App() {
