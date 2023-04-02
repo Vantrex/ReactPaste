@@ -10,6 +10,7 @@ import {API_URL, EndPoints} from "../../util/consts";
 function App() {
 
     useEffect(() => {
+        console.log("useEffect @App")
         document.title = process.env.REACT_APP_PASTE_API_URL
     })
     const putPaste = async (title: string, content: string) => {
