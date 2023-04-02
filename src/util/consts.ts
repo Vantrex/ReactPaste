@@ -1,8 +1,6 @@
 
+export const API_URL = process.env.REACT_PASTE_API_URL;
 
-export enum API {
-    API_URL = 'http://localhost:8080'
-}
 
 export enum EndPoints {
     PASTE = '/paste'

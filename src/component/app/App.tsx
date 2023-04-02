@@ -4,7 +4,7 @@ import PasteForm from "../form/PasteForm";
 import PasteDisplay from "../paste/PasteDisplay"
 import axios from "axios";
 import {Paste} from "../../model/paste/paste";
-import {API, EndPoints} from "../../util/consts";
+import {API, API_URL, EndPoints} from "../../util/consts";
 
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
             title: title,
             content: content
         }
-        await axios.put<Paste>(API.API_URL + EndPoints.PASTE, body).then(value => {
+        await axios.put<Paste>(API_URL + EndPoints.PASTE, body).then(value => {
             window.location.pathname = "/" + value.data.id;
          //   window.history.pushState(null, '', "/" + value.data.id)
         })
