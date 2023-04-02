@@ -10,21 +10,9 @@ function ConfirmPostForm(properties: ConfirmProperties) {
     const [showModal, setShowModal] = useState(false);
     const [pasteTitle, setPasteTitle] = useState<undefined | string>(undefined)
 
-    const handleEscape = (event: KeyboardEvent) => {
-        if (event.key === 'Escape')
-            handleCancel()
-    }
-
-
-    useEffect(() => {
-        if (showModal)
-            document.addEventListener('keydown', handleEscape)
-        else
-            document.removeEventListener('keydown', handleEscape);
-    },  [ showModal ] )
 
     const handleConfirm = () => {
-            properties.onConfirm(pasteTitle)
+        properties.onConfirm(pasteTitle)
         setShowModal(false);
     }
 
@@ -32,6 +20,19 @@ function ConfirmPostForm(properties: ConfirmProperties) {
         properties.onCancel()
         setShowModal(false);
     }
+
+    useEffect(() => {
+        const handleEscape = (event: KeyboardEvent) => {
+            if (event.key === 'Escape')
+                handleCancel()
+        }
+        if (showModal)
+            document.addEventListener('keydown', handleEscape)
+        else
+            document.removeEventListener('keydown', handleEscape);
+    })
+
+
 
     return (
         <>
