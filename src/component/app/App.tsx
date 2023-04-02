@@ -12,6 +12,8 @@ function App() {
     useEffect(() => {
         console.log("useEffect @App")
         axios.defaults.baseURL = API_URL
+        console.log(axios.defaults.url)
+        console.log(axios.defaults.baseURL)
     })
     const putPaste = async (title: string, content: string) => {
         const body = {
