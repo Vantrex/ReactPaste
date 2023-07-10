@@ -13,12 +13,10 @@ function PasteDisplay() {
 
     const [paste, setPaste] = useState<Paste | null>(null)
 
-    const { id } = useParams();
+    const {id} = useParams();
     useEffect(() => {
-
         axios.get<Paste>(EndPoints.PASTE + "/" + id)
             .then(response => setPaste(response.data))
-
     })
 
     useEffect(() => {

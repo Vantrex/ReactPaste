@@ -1,3 +1,7 @@
-* {
+.app-background {
     background-color: rgba(30,30,30,255) !important;
+}
+
+.list-background {
+    background-color: gray;
 }
