@@ -9,7 +9,7 @@ import PasteItem from "./item/PasteItem";
 function PasteList() {
 
     const [searchTitle, setSearchTitle] = useState('')
-    const [rateLimit, setRateLimit] = useState(false)
+    const [debounceTime, setDebounceTime] = useState(false)
     const [changedSearchTitle, setChangedSearchTitle] = useState(false)
     const [pastes, setPastes] = useState<Paste[] | undefined>(undefined)
     const [lastPaste, setLastPaste] = useState(null)
@@ -28,15 +28,15 @@ function PasteList() {
     }
 
     useEffect(() => {
-        if (!rateLimit) {
-            setRateLimit(true)
+        if (!debounceTime) {
+            setDebounceTime(true)
             if (searchTitle.length > 0) {
                 setLastPaste(null)
                 searchPastes().catch((e) => console.log("error while fetching pastes", e))
             }
             setChangedSearchTitle(false)
             setTimeout(() => {
-                setRateLimit(false)
+                setDebounceTime(false)
                 if (changedSearchTitle) {
                     if (searchTitle.length > 0) {
                         setLastPaste(null)
