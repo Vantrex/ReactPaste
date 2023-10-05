@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Paste} from "../../../model/paste/paste";
 
 interface Property {
@@ -13,12 +13,13 @@ function ContentPreview(property: Property) {
 
 function PasteItem(property: Property) {
 
+    const[contentPreview, setContentPreview] = useState(false)
     const paste = property.paste;
     return (
         <>
             <div>
-                <h2 onMouseOver={(e) => console.log("mouse enter")}>{paste.title}</h2>
-
+                <h2 onMouseOut={(e) => setContentPreview(false)} onMouseOver={(e) => setContentPreview(true)}>{paste.title}</h2>
+                {contentPreview?<ContentPreview paste={paste}></ContentPreview> : null}
             </div>
         </>
     )

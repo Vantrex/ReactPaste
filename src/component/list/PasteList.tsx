@@ -44,7 +44,7 @@ function PasteList() {
                     }
                     setChangedSearchTitle(false)
                 }
-            }, 500);
+            }, 250);
         }
     }, [searchTitle])
 
