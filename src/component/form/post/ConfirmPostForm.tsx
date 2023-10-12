@@ -33,13 +33,14 @@ function ConfirmPostForm(properties: ConfirmProperties) {
     })
 
 
-
     return (
         <>
-            <img className={"save-symbol"} src={save} alt="logo" width={40} height={40} onClick={event => setShowModal(true)}/>
+            <img className={"save-symbol"} src={save} alt="logo" width={40} height={40}
+                 onClick={() => setShowModal(true)}/>
             {showModal && (
                 <div className="modal-content">
-                    <textarea className={"symbol-item"} value={pasteTitle} onChange={event => setPasteTitle(event.target.value)}></textarea>
+                    <textarea className={"symbol-item"} value={pasteTitle}
+                              onChange={event => setPasteTitle(event.target.value)}></textarea>
                     <button className={"symbol-item"} onClick={handleConfirm}>Save</button>
                     <button className={"symbol-item"} onClick={handleCancel}>X</button>
                 </div>

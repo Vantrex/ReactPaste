@@ -14,7 +14,7 @@ function App() {
 
 
     return (
-        <><Router basename={'/paste'}>
+        <><Router basename={'/'}>
             <div className="app-background">
                 <Routes>
                     <Route path="/*" Component={PasteForm}/>

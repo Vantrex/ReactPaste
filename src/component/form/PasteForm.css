@@ -1,4 +1,12 @@
+html, body {
 
+}
+.content-wrapper {
+    background-color: rgb(128, 128, 128);
+    min-height: 100vh;
+    box-sizing: border-box;
+
+}
 .controls {
     height: 30px;
     width: 100%;
@@ -13,15 +21,20 @@
 
 
 .paste-container {
-    margin: 20px;
+    margin: 60px 20px 20px;
+
+    padding: 20px;
 }
 .paste-area {
-
+    scrollbar-gutter: both-edges;
+    scrollbar-highlight-color: aqua;
+    background-color: rgba(30,30,30,255) !important;
     width: 100%;
     height: 700px;
     font-size: 16px;
     padding: 10px;
-    border: 1px solid white;
+    border: 4px solid rgb(0,30,30,255);
+    border-radius: 30px;
     box-sizing: border-box;
     color: #dcdcdc;
 }
@@ -33,12 +46,16 @@
 }
 
 .save-symbol {
-    position: sticky;
-    margin-top: 10px;
-    margin-left: 16px;
+    position: absolute;
+   /* top: 10px; */
+    margin-top: 1rem;
+    left: 50%;
     width: 40px;
     height: 40px;
+    z-index: 2; /* Stellen Sie sicher, dass das Symbol über anderen Elementen liegt */
 }
+
+
 
 .symbols {
     display: flex;

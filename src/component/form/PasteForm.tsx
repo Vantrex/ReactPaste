@@ -34,9 +34,7 @@ function PasteForm() {
             title: title,
             content: content
         }
-        await axios.put<Paste>(EndPoints.PASTE, body).then(value => {
-            window.location.pathname = "/paste/" + value.data.id;
-        })
+        return await axios.put<Paste>(EndPoints.PASTE, body);
     }
 
     useEffect(() => {
@@ -45,7 +43,9 @@ function PasteForm() {
             if (realTitle === '') {
                 realTitle = pasteContent.substring(0, Math.min(20, pasteContent.length));
             }
-            putPaste(realTitle, pasteContent)
+            putPaste(realTitle, pasteContent).then(value =>
+                window.location.pathname = "/" + value.data.id);
+
         }
     }, [pasteContent, pasteTitle, saving])
 
@@ -53,11 +53,11 @@ function PasteForm() {
     return (
         <div className={"content-wrapper"}>
             <div className="symbols">
-                <ConfirmPostForm onConfirm={title1 => {
-                    if (title1 === undefined)
+                <ConfirmPostForm onConfirm={title => {
+                    if (title === undefined)
                         setPasteTitle(pasteContent.substring(0, Math.min(20, pasteContent.length)))
                     else {
-                        setPasteTitle(title1)
+                        setPasteTitle(title)
                     }
                     setSaving(true)
                 }} onCancel={() => {
